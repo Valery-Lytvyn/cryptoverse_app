@@ -1,9 +1,12 @@
 {
   "name": "cryptoverse_app",
   "private": true,
+  "homepage": "https://Valery-Lytvyn.github.io/cryptoverse_app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
