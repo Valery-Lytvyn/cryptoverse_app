@@ -3,7 +3,7 @@ import { Col, Collapse, Row, Avatar } from "antd";
 import millify from "millify";
 import { useGetExchangesQuery } from "../services/cryptoApi";
 import { Loader } from "../components";
-import { Panel, Text } from "../constants/antConst";
+import { Text } from "../constants/antConst";
 import { ExchangesList } from "../types";
 
 const ExchangesPage = () => {
@@ -38,35 +38,38 @@ const ExchangesPage = () => {
               price,
               numberOfMarkets,
               coinrankingUrl,
-            }) => (
-              <Col span={24} key={uuid}>
-                <Collapse>
-                  <Panel
-                    key={uuid}
-                    showArrow={false}
-                    header={
-                      <Row key={uuid}>
-                        <Col span={14}>
-                          <Text>
-                            <strong>{rank}.</strong>
-                          </Text>
-                          <Avatar className="exchange_image" src={iconUrl} />
-                          <Text>
-                            <strong>{name}</strong>
-                          </Text>
-                        </Col>
-                        <Col span={6}>${millify(+price)}</Col>
-                        <Col span={4}>{millify(numberOfMarkets)}</Col>
-                      </Row>
-                    }
-                  >
+            }) => {
+              const items = [
+                {
+                  key: uuid,
+                  label: (
+                    <Row>
+                      <Col span={14}>
+                        <Text>
+                          <strong>{rank}.</strong>
+                        </Text>
+                        <Avatar className="exchange_image" src={iconUrl} />
+                        <Text>
+                          <strong>{name}</strong>
+                        </Text>
+                      </Col>
+                      <Col span={6}>${millify(+price)}</Col>
+                      <Col span={4}>{millify(numberOfMarkets)}</Col>
+                    </Row>
+                  ),
+                  children: (
                     <a href={coinrankingUrl} target="_blank" rel="noreferrer">
                       {coinrankingUrl}
                     </a>
-                  </Panel>
-                </Collapse>
-              </Col>
-            )
+                  ),
+                },
+              ];
+              return (
+                <Col span={24} key={uuid}>
+                  <Collapse items={items} defaultActiveKey={["1"]} />
+                </Col>
+              );
+            }
           )}
       </Row>
       {loading && <Loader />}

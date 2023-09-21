@@ -8,6 +8,7 @@ import {
   NewsPage,
 } from "./index";
 import { ROUTES } from "../constants/routes";
+import ErrorPage from "./ErrorPage";
 
 const LayoutPage = () => {
   return (
@@ -22,6 +23,7 @@ const LayoutPage = () => {
           <Route path={ROUTES.exchanges} element={<ExchangesPage />} />
           <Route path={ROUTES.details(null)} element={<CryptoDetailsPage />} />
           <Route path={ROUTES.news} element={<NewsPage />} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>
     </Layout>

@@ -7,6 +7,7 @@ import {
   FundOutlined,
   MenuOutlined,
   BoldOutlined,
+  CloseOutlined,
 } from "@ant-design/icons";
 import { ROUTES } from "../constants/routes";
 import icon from "../assets/logo.webp";
@@ -71,13 +72,11 @@ const Navbar = () => {
               className="menu_control-container"
               onClick={() => setIsActiveMenu(!isActiveMenu)}
             >
-              <MenuOutlined />
+              {!isActiveMenu ? <MenuOutlined /> : <CloseOutlined />}
             </Button>
           )}
         </div>
-        <div onClick={() => setIsActiveMenu(false)}>
-          {isActiveMenu && <Menu theme="dark" items={menuItems} />}
-        </div>
+        {isActiveMenu && <Menu theme="dark" items={menuItems} />}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 export const ROUTES = {
-  index: "/",
+  index: "/cryptoverse_app",
   cryptocurrencies: "/cryptocurrencies",
   details: (coinId: string | null) =>
     coinId ? `/crypto/${coinId}` : "/crypto/:coinId",

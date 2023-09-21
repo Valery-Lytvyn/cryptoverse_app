@@ -207,7 +207,6 @@ const CryptoDetailsPage = () => {
           </Col>
         </Col>
       </Col>
-
       {loading && <Loader />}
     </>
   );
